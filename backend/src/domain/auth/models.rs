@@ -88,3 +88,18 @@ impl Claims {
         }
     }
 }
+
+#[cfg(test)]
+impl TokenClaims {
+    /// Creates mock TokenClaims for a given user ID.
+    pub fn new_mock(user_id: UserId) -> Self {
+        use chrono::Utc;
+
+        Self {
+            sub: user_id,
+            exp: (Utc::now() + chrono::Duration::hours(1)).timestamp() as usize,
+            iat: Utc::now().timestamp() as usize,
+            jti: uuid::Uuid::new_v4().to_string(),
+        }
+    }
+}
