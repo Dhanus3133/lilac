@@ -28,7 +28,7 @@ pub struct PostLogsRequest {
 }
 
 /// An HTTP representation of a [TrainingJob].
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct HttpTrainingJob {
     pub job_id: JobId,
     pub job_name: String,

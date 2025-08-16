@@ -63,7 +63,7 @@ impl From<Uuid> for ApiKeyId {
 
 /// Represents a newly generated API key, including the plaintext secret.
 /// This struct is only created once and given to the user. It is not stored.
-#[derive(Clone, Debug, Serialize, Default)]
+#[derive(Clone, Debug, Serialize, Deserialize, Default)]
 pub struct NewApiKey {
     pub id: ApiKeyId,
     pub prefix: String,
