@@ -7,7 +7,7 @@ use crate::domain::{
     training_job::models::{JobId, ResourceRequirements, TrainingJob, TrainingJobStatus},
 };
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CreateTrainingJobRequest {
     pub name: String,
     pub definition: String,
@@ -17,7 +17,7 @@ pub struct CreateTrainingJobRequest {
 
 pub type CreateTrainingJobResponse = TrainingJob;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct UpdateTrainingJobStatusRequest {
     pub status: TrainingJobStatus,
 }

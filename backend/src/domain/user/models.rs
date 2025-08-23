@@ -9,7 +9,7 @@ use crate::{domain::cluster::models::ClusterId, identifier};
 
 identifier!(UserId);
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 pub struct User {
     pub id: UserId,
     pub first_name: Option<String>,
