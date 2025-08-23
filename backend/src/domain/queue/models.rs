@@ -26,3 +26,15 @@ pub struct UpdateQueueRequest {
     pub priority: i32,
     pub cluster_targets: Vec<ClusterId>,
 }
+
+#[cfg(test)]
+impl Default for Queue {
+    fn default() -> Self {
+        Self {
+            id: QueueId::generate(),
+            name: "default-queue".to_string(),
+            priority: 100,
+            cluster_targets: vec![],
+        }
+    }
+}

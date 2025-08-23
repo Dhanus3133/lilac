@@ -55,7 +55,7 @@ impl From<TrainingJob> for HttpTrainingJob {
     }
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ListTrainingJobsHttpResponse {
     jobs: Vec<HttpTrainingJob>,
 }
