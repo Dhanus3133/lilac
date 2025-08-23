@@ -60,7 +60,6 @@ mod tests {
         body::{to_bytes, Body},
         http::{Request, StatusCode},
     };
-    use chrono::Utc;
     use mockall::predicate::*;
     use secrecy::ExposeSecret;
     use std::sync::Arc;
@@ -82,12 +81,7 @@ mod tests {
         user_id: UserId,
         token: &'static str,
     ) -> crate::domain::auth::service::MockAuthService {
-        let token_claims = TokenClaims {
-            sub: user_id,
-            exp: (Utc::now() + chrono::Duration::hours(1)).timestamp() as usize,
-            iat: Utc::now().timestamp() as usize,
-            jti: uuid::Uuid::new_v4().to_string(),
-        };
+        let token_claims = TokenClaims::new_mock(user_id);
         let mut auth_service = crate::domain::auth::service::MockAuthService::new();
         auth_service
             .expect_validate_token()
@@ -110,7 +104,6 @@ mod tests {
             });
         cluster_service
     }
-
 
     #[tokio::test]
     async fn test_create_api_key_for_cluster_route() {
