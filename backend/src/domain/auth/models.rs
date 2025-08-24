@@ -20,7 +20,7 @@ pub struct AuthUser {
     pub username: String,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Token {
     pub access_token: String,
     pub token_type: String,
@@ -36,8 +36,7 @@ impl Token {
 }
 
 #[derive(Debug)]
-pub struct Claims {
-    pub sub: UserId,
+pub struct Claims { pub sub: UserId,
     pub exp: usize,
     pub iat: usize,
 }
